@@ -9,7 +9,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
 header('Content-type: application/json; charset=utf-8');
 require_once('config/db.php');
-$request = file_get_contents('php://input'); /*print_r($request);*/
+$request = json_decode(file_get_contents('php://input')); /*print_r($request);*/
 $request_header =  apache_request_headers();/*print_r($request_header); die;*/
 $api = $request_header['Api'];
 $method = $request_header['Method'];

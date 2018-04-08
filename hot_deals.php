@@ -14,14 +14,13 @@ Switch($method){
         break;
     case 'list':
         print_r($request);
-        $limit = $request['Limit'];
-        for($i=0; $i<$limit; $i++){
-            $deals[$i]= [
+        $limit = $request->Limit;
+        for($i=1; $i<=$limit; $i++){
+            $deals[$i - 1]= [
                 'id' => $i,
   'category_id' => $i,
-  'is_featured' => ($i % 2 == 0) ? 1 : 0,
-  'expiary' => date('Y-m-d H:i:s', '+5'),
-  'image' => '',
+  'expiary' => date('Y-m-d H:i:s', strtotime('+5 hours')),
+  'image' => 'http://mango-bd.com/API/img/hot_deals/'.$i.'.png',
   'title' => 'Hot Deals - '.$i,
   'description' => 'asd hot deals asd hot deals asd hot deals asd hot deals ' ,
   'client_id' =>  1,
@@ -39,12 +38,14 @@ Switch($method){
             ];
         }
         $response['status'] = 1;
+        $response['message'] = 'Hot Deal List';
         $response['result'] = $deals;
         echo json_encode($response);
         break;
     default:
         $response['status'] = 0;
         $response['message'] = 'Error Occurred';
+        $response['error_code'] = 400;
         echo json_encode($response);
         break;
 }
