@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: "http://mango-bd.com/API/",
+            data: '{"Limit":"5"}',
+            dataType: 'json',
+            headers: { 'Api': 'hot_deals', 'Method': 'list' },
+            processData: false,
+            type: "POST",
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(err){
+                console.log(err.status);
+            }
+        });
+    });
+</script>
+</html>

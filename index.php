@@ -7,10 +7,11 @@
  */
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Api, Method');
 header('Content-type: application/json; charset=utf-8');
 require_once('config/db.php');
-$request = json_decode(file_get_contents('php://input')); /*print_r($request);*/
-$request_header =  apache_request_headers();/*print_r($request_header); die;*/
+$request = json_decode(file_get_contents('php://input')); /*echo json_encode($request);*/
+$request_header =  apache_request_headers();//die;
 $api = $request_header['Api'];
 $method = $request_header['Method'];
 $api_user = $request_header['ApiUser'];
@@ -21,6 +22,10 @@ Switch($api){
         require_once'hot_deals.php';
         break;
     case 'featured_deals':
+        require_once'featured_deals.php';
+        break;
+    case 'categories':
+        require_once'categories.php';
         break;
     default:
         $response['status'] = 0;

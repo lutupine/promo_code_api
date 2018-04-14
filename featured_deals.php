@@ -18,7 +18,7 @@ Switch($method){
             $deals[$i - 1]= [
                 'id' => $i,
   'category_id' => $i,
-  'expiary' => date('Y-m-d H:i:s', strtotime('+5 hours')),
+  'expiry' => date('Y-m-d H:i:s', strtotime('+5 hours')),
   'image' => 'http://mango-bd.com/API/img/hot_deals/'.$i.'.png',
   'title' => 'Hot Deals - '.$i,
   'description' => 'asd hot deals asd hot deals asd hot deals asd hot deals ' ,
@@ -32,12 +32,12 @@ Switch($method){
   'gift_description' => '' ,
   'gift_title' => '' ,
   'gift_image' => '' ,
-  'hot_deal' => 1,
+  'is_featured' => 1,
   'is_flat_discount' => 0
             ];
         }
         $response['status'] = 1;
-        $response['message'] = 'Hot Deal List';
+        $response['message'] = 'Featured Deal List';
         $response['result'] = $deals;
         echo json_encode($response);
         break;
