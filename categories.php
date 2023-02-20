@@ -6,7 +6,7 @@
  * Time: 12:50 PM
  */
 Switch($method){
-    case 'add':
+    case 'adds':
         break;
     case 'edit':
         break;
