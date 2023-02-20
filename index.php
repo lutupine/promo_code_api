@@ -16,7 +16,7 @@ $api = $request_header['Api'];
 $method = $request_header['Method'];
 $api_user = $request_header['ApiUser'];
 $api_key = $request_header['ApiKey'];
-//API Authentication & Authorization
+//API Authentication & Authorizations
 Switch($api){
     case 'hot_deals':
         require_once'hot_deals.php';
